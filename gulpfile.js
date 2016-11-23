@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var jade = require('gulp-jade');
 var sass = require('gulp-sass');
 var browserSync = require('browser-sync').create();
+var autoprefixer = require('gulp-autoprefixer');
 
 gulp.task('jade', function() {
     return gulp.src('src/**/*.jade')
@@ -13,6 +14,7 @@ gulp.task('sass', function()
 {
   gulp.src('src/sass/**/*.sass')
   .pipe(sass().on('error', sass.logError))
+  .pipe(autoprefixer())
   .pipe(gulp.dest('dest/css/'))
   .pipe(browserSync.reload({stream: true}));
 });
